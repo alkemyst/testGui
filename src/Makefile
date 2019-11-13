@@ -1,7 +1,10 @@
-all: MainWindow.py
+WINDOWS=MainWindow.py
+WINDOWS+=ProgressForm.py
 
-MainWindow.py: ../ui/MainWindow.ui
-	pyside2-uic ../ui/MainWindow.ui > MainWindow.py
+all: $(WINDOWS)
+
+%.py: ../ui/%.ui
+	pyside2-uic $< > $@
 
 clean:
-	rm -f MainWindow.py
+	rm -f $(WINDOWS)
